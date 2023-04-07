@@ -523,11 +523,15 @@ int main(int argc, char * argv[]) {
   if (argc <= 1) {
     std::cout <<
     "\nThe following arguments are necessary:\n"
-#ifdef OJPH_ENABLE_TIFF_SUPPORT
+#if defined( OJPH_ENABLE_TIFF_SUPPORT) && defined( OJPH_ENABLE_DPX_SUPPORT)
+    " -i input file name (either pgm, ppm, tif(f), dpx, or raw(yuv))\n"
+#elif defined( OJPH_ENABLE_TIFF_SUPPORT)
     " -i input file name (either pgm, ppm, tif(f), or raw(yuv))\n"
+#elif defined( OJPH_ENABLE_DPX_SUPPORT)
+    " -i input file name (either pgm, ppm, dpx, or raw(yuv))\n"
 #else
     " -i input file name (either pgm, ppm, or raw(yuv))\n"
-#endif // !OJPH_ENABLE_TIFF_SUPPORT
+#endif // !OJPH_ENABLE_TIFF_SUPPORT !OJPH_ENABLE_DPX_SUPPORT
     " -o output file name\n\n"
 
     "The following option has a default value (optional):\n"
